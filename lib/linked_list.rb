@@ -53,12 +53,24 @@ class LinkedList
       linked_list = "| |"
     else
       payload_list = item.payload
-      until item.last?
-        item = item.next_list_item
-        payload_list += ", " + item.payload
-      end
+        until item.last?
+          item = item.next_list_item
+          payload_list += ", " + item.payload
+        end
     linked_list = "| #{payload_list} |"
     end
+  end
+
+  def indexOf(payload)
+    item = @first_item
+    return nil if item.nil?
+    i = 0
+      until payload == item.payload
+        i += 1
+        item = item.next_list_item
+        return nil if item.nil?
+      end
+    i
 
   end
 
